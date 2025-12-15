@@ -18,9 +18,9 @@ public class MatriculacionesDAOImpl implements IMatriculacionesDAO {
 	private static Logger logger = LoggerFactory.getLogger(MatriculacionesDAOImpl.class);
 
 	@Override
-	public double obtenerTasaAsignatura(String idAsignatura) {
+	public String obtenerTasaAsignatura(String idAsignatura) {
 		String sql = "SELECT tasa FROM asignaturas WHERE id = ? AND activo = 1";
-		double tasa = 0.0;
+		String tasa = "";
 
 		try {
 			Connection connection = DBUtils.conexion();
@@ -29,7 +29,7 @@ public class MatriculacionesDAOImpl implements IMatriculacionesDAO {
 			ResultSet rs = ps.executeQuery();
 
 			if (rs.next()) {
-				tasa = rs.getDouble("tasa");
+				tasa = rs.getString("tasa");
 			}
 			connection.close();
 		} catch (SQLException e) {

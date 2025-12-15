@@ -31,7 +31,15 @@ public class NotaDTO {
         this.idAlumno = idAlumno;
         this.fecha = fecha;
     }
-
+    public NotaDTO(int id, String nota, String fecha, int idAlumno, String nombreAlumno, int idAsignatura, String nombreAsignatura) {
+        this.id = id;
+        this.nota = nota;
+        this.fecha = fecha;
+        this.idAlumno = idAlumno;
+        this.nombreAlumno = nombreAlumno;
+        this.idAsignatura = idAsignatura;
+        this.nombreAsignatura = nombreAsignatura;
+    }
     // Constructor mínimo
     public NotaDTO(int id, String nota) {
         super();

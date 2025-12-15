@@ -27,6 +27,9 @@
         <mapping class="entities.AlumnoEntity"></mapping>
         <mapping class="entities.MunicipiosEntity"></mapping>
         <mapping class="entities.AsignaturasEntity"></mapping>
+        <mapping class="entities.NotasEntity"></mapping>
+        <mapping class="entities.MatriculacionEntity"></mapping>
+        <mapping class="entities.CajaEntity"></mapping>
 
     </session-factory>
 </hibernate-configuration>

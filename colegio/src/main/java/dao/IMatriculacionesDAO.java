@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import dto.MatriculacionDTO;
 
 public interface IMatriculacionesDAO {
-	double obtenerTasaAsignatura(String idAsignatura);
+	String obtenerTasaAsignatura(String idAsignatura);
 
 	int insertarMatriculacion(String idAsignatura, String idAlumno,
 			String fecha, String tasa) throws SQLException;

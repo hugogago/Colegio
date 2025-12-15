@@ -34,6 +34,10 @@ public class MunicipiosEntity {
     
     @OneToMany(mappedBy = "municipio")
     private List<AlumnoEntity> alumnos= new ArrayList<>();
+    
+    public MunicipiosEntity() {
+    	
+    }
 
 	public MunicipiosEntity(int idMunicipio, int idProvincia, String nombre, String codMunicipio, String dc) {
 		super();
