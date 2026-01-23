@@ -6,8 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.adrian.colegio.dao.interfaces.IDesplegablesDAO;
+import com.adrian.colegio.dtos.AlumnoDTO;
 import com.adrian.colegio.dtos.DesplegableDTO;
+import com.adrian.colegio.entities.AlumnoEntity;
+import com.adrian.colegio.entities.AsignaturaEntity;
 import com.adrian.colegio.entities.MunicipioEntity;
+import com.adrian.colegio.repositorios.AlumnoRepository;
+import com.adrian.colegio.repositorios.AsignaturaRepository;
 import com.adrian.colegio.repositorios.MunicipioRepository;
 
 @Repository
@@ -15,6 +20,12 @@ public class DesplegablesDAOImpl implements IDesplegablesDAO {
 
 	@Autowired // Inyectamos el repository
 	private MunicipioRepository municipioRepository;
+	
+	@Autowired
+	private AlumnoRepository alumnoRepository;
+	
+	@Autowired
+	private AsignaturaRepository asignaturaRepository;
 
 	@Override
 	public ArrayList<DesplegableDTO> desplegableMunicipios() {
@@ -35,14 +46,40 @@ public class DesplegablesDAOImpl implements IDesplegablesDAO {
 
 	@Override
 	public ArrayList<DesplegableDTO> desplegableAlumnos() {
-		// TODO Auto-generated method stub
-		return null;
+		Iterable<AlumnoEntity> listaEntidadesAlumno = alumnoRepository.findAll();	
+		ArrayList<DesplegableDTO> listaAlumnos = mapeoEntidadAlumnoComboDTO(listaEntidadesAlumno);
+		
+		return listaAlumnos;
 	}
+	
+	private ArrayList<DesplegableDTO> mapeoEntidadAlumnoComboDTO(Iterable<AlumnoEntity>listaEntidadesAlumno){
+		ArrayList<DesplegableDTO> listaCombos = new ArrayList<>();
+		for (AlumnoEntity alumnoEntity : listaEntidadesAlumno) {
+			listaCombos.add(new DesplegableDTO(alumnoEntity.getId(), alumnoEntity.getNombre()));
+		}
+		return listaCombos;
+		
+	}
+	
+	
+	
 
 	@Override
 	public ArrayList<DesplegableDTO> desplegableAsignaturas() {
-		// TODO Auto-generated method stub
-		return null;
+		Iterable<AsignaturaEntity> listaEntidadesAsignatura = asignaturaRepository.findAll();	
+		ArrayList<DesplegableDTO> listaAsignaturas = mapeoEntidadAsignaturasComboDTO(listaEntidadesAsignatura);
+		
+		return listaAsignaturas;
 	}
+	
+	private ArrayList<DesplegableDTO> mapeoEntidadAsignaturasComboDTO(Iterable<AsignaturaEntity>listaEntidadesAsignatura){
+		ArrayList<DesplegableDTO> listaCombos = new ArrayList<>();
+		for (AsignaturaEntity asignaturaEntity : listaEntidadesAsignatura) {
+			listaCombos.add(new DesplegableDTO(asignaturaEntity.getId(), asignaturaEntity.getNombre()));
+		}
+		return listaCombos;
+		
+	}
+	
 
 }
