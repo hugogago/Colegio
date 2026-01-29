@@ -84,10 +84,10 @@
                                     <tr th:each="pirata : ${lista}">
                                         <td th:text="${pirata.id}"></td>
                                         <td><strong th:text="${pirata.nombre}"></strong></td>
-                                        <td th:text="${pirata.frutaDiablo != null ? pirata.frutaDiablo : 'Sin fruta'}">
+                                        <td th:text="${pirata.frutaDelDiablo != null ? pirata.frutaDelDiablo : 'Sin fruta'}">
                                         </td>
                                          <td th:text="${pirata.tripulacion}"></td>
-                                        <td th:text="${#temporals.format(pirata.fechaNacimiento, 'dd/MM/yyyy')}"></td>
+                                        <td th:text="${pirata.fecha}"></td>
                                         <td th:text="${pirata.isla}"></td>
                                         <td>
                                             <span th:if="${pirata.activo == 1}" class="badge bg-success">Activo</span>

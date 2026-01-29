@@ -3,12 +3,14 @@ package com.daw.onepiece.dao.impl;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.daw.onepiece.dao.interfaces.IDesplegablesDAO;
 import com.daw.onepiece.dtos.DesplegableDTO;
 import com.daw.onepiece.entities.IslaEntity;
 import com.daw.onepiece.repositorios.IslaRepository;
 
+@Repository
 public class DesplegableDAOImpl implements IDesplegablesDAO {
 	@Autowired
 	private IslaRepository islaRepository;
