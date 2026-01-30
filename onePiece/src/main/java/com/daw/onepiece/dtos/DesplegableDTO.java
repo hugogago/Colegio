@@ -2,16 +2,16 @@ package com.daw.onepiece.dtos;
 
 public class DesplegableDTO {
 	private int id;
-	private String descripcion;
+	private String nombre;
 	
 	public DesplegableDTO() {
 		super();
 	}
 	
-	public DesplegableDTO(int id, String descripcion) {
+	public DesplegableDTO(int id, String nombre) {
 		super();
 		this.id = id;
-		this.descripcion = descripcion;
+		this.nombre = nombre;
 	}
 
 	public int getId() {
@@ -22,11 +22,11 @@ public class DesplegableDTO {
 		this.id = id;
 	}
 
-	public String getDescripcion() {
-		return descripcion;
+	public String getNombre() {
+		return nombre;
 	}
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
+	public void setDescripcion(String nombre) {
+		this.nombre = nombre;
 	}
 }
