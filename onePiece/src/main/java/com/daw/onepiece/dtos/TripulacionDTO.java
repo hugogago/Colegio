@@ -5,10 +5,10 @@ public class TripulacionDTO {
     private Integer id;
     private String nombre;
     private String barco;
-    private boolean estaActiva;
+    private Integer estaActiva;
     private int numeroMiembros;
 
-    public TripulacionDTO(Integer id, String nombre, String barco, boolean estaActiva, int numeroMiembros) {
+    public TripulacionDTO(Integer id, String nombre, String barco, Integer estaActiva, int numeroMiembros) {
         super();
         this.id = id;
         this.nombre = nombre;
@@ -45,11 +45,11 @@ public class TripulacionDTO {
         this.barco = barco;
     }
 
-    public boolean isEstaActiva() {
+    public Integer isEstaActiva() {
         return estaActiva;
     }
 
-    public void setEstaActiva(boolean estaActiva) {
+    public void setEstaActiva(Integer estaActiva) {
         this.estaActiva = estaActiva;
     }
 

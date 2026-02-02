@@ -169,5 +169,45 @@ public class PirataController {
 			return "piratas/actualizarPiratas";
 	}
 	
+	@GetMapping(value = "/formularioBorrarPiratas")
+	public String getFormularioEliminarPiratas() {
+	    return "piratas/borrarPiratas";
+	}
+	
+	@PostMapping(value = "/formularioBorrarPiratas")
+	public String formularioBorrarPiratas(
+			@RequestParam(value = "id", required = false) Integer id,
+			@RequestParam(value = "nombre", required = false) String nombre,
+			@RequestParam(value = "frutaDelDiablo", required = false) String fruta, ModelMap model){
+		
+		ArrayList<DesplegableDTO> listaIslas = desplegables.desplegableIslas();
+		
+		model.addAttribute("desplegableIslas", listaIslas);
+		
+		String nombreNull = nombre == null || nombre.trim().isEmpty() ? null : nombre.trim();
+		String frutaNull = fruta == null || fruta.trim().isEmpty() ? null : fruta.trim();
+		
+		
+		
+
+		ArrayList<PirataDTO> listadoPiratas = pirataService.buscarPiratas(id, nombreNull, frutaNull, 1);
+			
+
+	    model.addAttribute("lista", listadoPiratas);
+
+	    return "piratas/borrarPiratas";
+	}
+	
+	
+	@PostMapping(value = "/borrarPirata")
+	public String eliminarPiratas(@RequestParam("id") String id, ModelMap model) throws SQLException {
+		Integer resultado = pirataService.eliminarPirata(id);
+		
+		model.addAttribute("resultado",resultado);
+		return "piratas/borrarPiratas";
+	}
+	
+	
+	
 	
 }

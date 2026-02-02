@@ -19,7 +19,7 @@ public class PirataDAOImpl implements IPirataDAO {
     @Autowired
     private PirataRepository pirataRepository;
     
-    @Autowired
+   
     private IslaRepository islaRepository;
 
     @Override
@@ -65,7 +65,7 @@ public class PirataDAOImpl implements IPirataDAO {
     	PirataEntity pirata = pirataRepository.findById(Integer.parseInt(id)).get();
     	
     	pirata.setActivo(0);
-       pirataRepository.delete(pirata);
+       pirataRepository.save(pirata);
        return pirata.getId();
     }
 

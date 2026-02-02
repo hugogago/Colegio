@@ -28,8 +28,7 @@ public interface PirataRepository extends CrudRepository<PirataEntity, Integer> 
         LEFT JOIN p.isla i
         LEFT JOIN p.reclutamientos r
         LEFT JOIN r.tripulacion t
-        WHERE (r.esMiembroActual = TRUE OR r IS NULL)
-          AND (:id IS NULL OR p.id = :id)
+        WHERE  (:id IS NULL OR p.id = :id)
           AND (:nombre IS NULL OR LOWER(p.nombre) LIKE LOWER(CONCAT('%', :nombre, '%')))
           AND (:fruta IS NULL OR LOWER(p.frutaDelDiablo) LIKE LOWER(CONCAT('%', :fruta, '%')))
           AND (:activo IS NULL OR p.activo = :activo)

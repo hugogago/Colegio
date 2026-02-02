@@ -21,14 +21,14 @@ public class TripulacionEntity {
     private String barco;
     
     @Column(name = "estaActiva")
-    private boolean estaActiva;
+    private Integer estaActiva;
     
     
     @OneToMany(mappedBy = "tripulacion")
 	private List<ReclutamientoEntity> listaReclutamientos = new ArrayList<>();
 
 
-	public TripulacionEntity(Integer id, String nombre, String barco, boolean estaActiva,
+	public TripulacionEntity(Integer id, String nombre, String barco, Integer estaActiva,
 			List<ReclutamientoEntity> listaReclutamientos) {
 		super();
 		this.id = id;
@@ -73,12 +73,12 @@ public class TripulacionEntity {
 	}
 
 
-	public boolean isEstaActiva() {
+	public Integer isEstaActiva() {
 		return estaActiva;
 	}
 
 
-	public void setEstaActiva(boolean estaActiva) {
+	public void setEstaActiva(Integer estaActiva) {
 		this.estaActiva = estaActiva;
 	}
 
