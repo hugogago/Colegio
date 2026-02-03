@@ -43,6 +43,12 @@ public class TripulacionEntity {
 	}
 
 
+	public TripulacionEntity(String nombre, String barco, Integer estaActiva) {
+		this.nombre = nombre;
+		this.barco = barco;
+		this.estaActiva = estaActiva;
+	}
+
 	public Integer getId() {
 		return id;
 	}
@@ -73,7 +79,7 @@ public class TripulacionEntity {
 	}
 
 
-	public Integer isEstaActiva() {
+	public Integer getEstaActiva() {
 		return estaActiva;
 	}
 

@@ -6,9 +6,9 @@ public class TripulacionDTO {
     private String nombre;
     private String barco;
     private Integer estaActiva;
-    private int numeroMiembros;
+    private Long numeroMiembros;
 
-    public TripulacionDTO(Integer id, String nombre, String barco, Integer estaActiva, int numeroMiembros) {
+    public TripulacionDTO(Integer id, String nombre, String barco, Integer estaActiva, Long numeroMiembros) {
         super();
         this.id = id;
         this.nombre = nombre;
@@ -45,7 +45,7 @@ public class TripulacionDTO {
         this.barco = barco;
     }
 
-    public Integer isEstaActiva() {
+    public Integer getEstaActiva() {
         return estaActiva;
     }
 
@@ -53,11 +53,11 @@ public class TripulacionDTO {
         this.estaActiva = estaActiva;
     }
 
-    public int getNumeroMiembros() {
+    public Long getNumeroMiembros() {
         return numeroMiembros;
     }
 
-    public void setNumeroMiembros(int numeroMiembros) {
+    public void setNumeroMiembros(Long numeroMiembros) {
         this.numeroMiembros = numeroMiembros;
     }
 }

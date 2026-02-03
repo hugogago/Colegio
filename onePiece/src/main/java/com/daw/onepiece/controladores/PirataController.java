@@ -41,7 +41,7 @@ public class PirataController {
 	
 	
 	@PostMapping("/listadoPiratas")
-	public String listadoMatriculaciones(@RequestParam(value = "id", required = false) Integer id,
+	public String listadoPiratas(@RequestParam(value = "id", required = false) Integer id,
 			@RequestParam(value = "nombre", required = false) String nombre,
 			@RequestParam(value = "frutaDiablo", required = false) String fruta,
 			@RequestParam(value = "activo", required = false) String activo, ModelMap model){

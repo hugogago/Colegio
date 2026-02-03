@@ -5,10 +5,11 @@ import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import com.daw.onepiece.dtos.PirataDTO;
 import com.daw.onepiece.entities.PirataEntity;
-
+@Repository
 public interface PirataRepository extends CrudRepository<PirataEntity, Integer> {
 
     

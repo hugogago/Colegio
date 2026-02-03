@@ -6,14 +6,16 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.daw.onepiece.dtos.TripulacionDTO;
 import com.daw.onepiece.entities.TripulacionEntity;
 
+@Repository
 public interface TripulacionRepository extends CrudRepository<TripulacionEntity, Integer> {
 
-    // 🔹 Listar tripulaciones con filtros y número de miembros actuales
+   
     @Query("""
         SELECT new com.daw.onepiece.dtos.TripulacionDTO(
             t.id,
@@ -35,7 +37,7 @@ public interface TripulacionRepository extends CrudRepository<TripulacionEntity,
         @Param("id") Integer id,
         @Param("nombre") String nombre,
         @Param("barco") String barco,
-        @Param("activo") Integer estaActivo
+        @Param("estaActiva") Integer estaActiva
     );
 
    
