@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.daw.onepiece.dao.interfaces.ITripulacionDAO;
+import com.daw.onepiece.dtos.MiembroTripulacionDTO;
 import com.daw.onepiece.dtos.TripulacionDTO;
 import com.daw.onepiece.entities.TripulacionEntity;
+import com.daw.onepiece.repositorios.ReclutamientoRepository;
 import com.daw.onepiece.repositorios.TripulacionRepository;
 
 @Repository
@@ -16,6 +18,9 @@ public class TripulacionDAOImpl implements ITripulacionDAO {
 	
 	 @Autowired
 	 private TripulacionRepository tripulacionRepository;
+	 
+	 @Autowired
+	 private ReclutamientoRepository reclutamientoRepository;
 	 
 	 
 	 @Override
@@ -56,6 +61,12 @@ public class TripulacionDAOImpl implements ITripulacionDAO {
 		 tripulacion.setEstaActiva(0);
 		 tripulacionRepository.save(tripulacion);
 		 return tripulacion.getId();
+	 }
+	 
+	 
+	 @Override
+	 public ArrayList<MiembroTripulacionDTO> obtenerPiratasActivosDeTripulacion(Integer idTripulacion) {
+		return reclutamientoRepository.obtenerPiratasActivosDeTripulacion(idTripulacion);
 	 }
 	 
 

@@ -2,6 +2,7 @@ package com.daw.onepiece.dao.interfaces;
 
 import java.util.ArrayList;
 
+import com.daw.onepiece.dtos.MiembroTripulacionDTO;
 import com.daw.onepiece.dtos.TripulacionDTO;
 
 public interface ITripulacionDAO {
@@ -13,5 +14,7 @@ public interface ITripulacionDAO {
 	int actualizarTripulacion(Integer id, String nombre, String barco, Integer estaActiva);
 
 	int eliminarTripulacion(String id);
+
+	ArrayList<MiembroTripulacionDTO> obtenerPiratasActivosDeTripulacion(Integer idTripulacion);
 
 }

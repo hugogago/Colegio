@@ -42,10 +42,6 @@ public interface TripulacionRepository extends CrudRepository<TripulacionEntity,
 
    
 
-    // 🔹 Desactivar todos los reclutamientos activos de un pirata
-    @Modifying
-    @Transactional
-    @Query("UPDATE ReclutamientoEntity r SET r.esMiembroActual = false WHERE r.pirata.id = :idPirata AND r.esMiembroActual = true")
-    void desactivarReclutamientosDelPirata(@Param("idPirata") Integer idPirata);
+  
 
 }
