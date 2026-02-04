@@ -41,6 +41,28 @@ public interface PirataRepository extends CrudRepository<PirataEntity, Integer> 
         @Param("fruta") String fruta,
         @Param("activo") Integer activo
     );
+    
+    
+    @Query("""
+		    SELECT new com.daw.onepiece.dtos.PirataDTO(
+		        p.id,
+		        p.nombre,
+		        p.frutaDelDiablo,
+		        null,
+		        p.fecha,
+		        i.nombre,
+		        i.id,
+		        p.activo
+		    )
+		    FROM PirataEntity p
+		    LEFT JOIN p.isla i
+		    WHERE NOT EXISTS (
+		        SELECT 1
+		        FROM ReclutamientoEntity r
+		        WHERE r.pirata = p
+		    )
+		""")
+    List<PirataDTO> listarPiratasSinReclutamiento();
 
    
     

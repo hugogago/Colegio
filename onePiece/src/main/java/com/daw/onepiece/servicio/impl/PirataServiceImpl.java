@@ -35,5 +35,14 @@ public class PirataServiceImpl implements IPirataService {
 	    public int eliminarPirata(String id) {
 	    	return pirataDAO.eliminarPirata(id);
 	    }
+
+		@Override
+		public ArrayList<PirataDTO> listarPiratasActivosNoEnTripulacion(Integer id) {
+			
+			return pirataDAO.listarPiratasActivosNoEnTripulacion(id);
+		}
+	    
+	    
+	   
 	
 }

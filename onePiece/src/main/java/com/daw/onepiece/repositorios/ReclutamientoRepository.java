@@ -9,26 +9,27 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.daw.onepiece.dtos.MiembroTripulacionDTO;
-import com.daw.onepiece.entities.TripulacionEntity;
+import com.daw.onepiece.entities.ReclutamientoEntity;
+
 
 @Repository
-public interface ReclutamientoRepository extends CrudRepository<TripulacionEntity, Integer> {
+public interface ReclutamientoRepository extends CrudRepository<ReclutamientoEntity, Integer> {
 	@Modifying
 	@Query("""
 			    UPDATE ReclutamientoEntity r
-			    SET r.esMiembroActual = 0
+			    SET r.esMiembroActual = false
 			    WHERE r.pirata.id = :idPirata
-			    AND r.esMiembroActual = 1
+			    AND r.esMiembroActual = true
 			""")
 	int desactivarMiembroActual(@Param("idPirata") Integer idPirata);
 
 	@Modifying
 	@Query("""
 			    UPDATE ReclutamientoEntity r
-			    SET r.esMiembroActual = 0
+			    SET r.esMiembroActual = false
 			    WHERE r.pirata.id = :idPirata
 			    AND r.tripulacion.id = :idTripulacion
-			    AND r.esMiembroActual = 1
+			    AND r.esMiembroActual = true
 			""")
 	int desactivarMiembroDeTripulacion(@Param("idPirata") Integer idPirata,
 			@Param("idTripulacion") Integer idTripulacion);
@@ -37,9 +38,9 @@ public interface ReclutamientoRepository extends CrudRepository<TripulacionEntit
 			    SELECT COUNT(r)
 			    FROM ReclutamientoEntity r
 			    WHERE r.tripulacion.id = :idTripulacion
-			    AND r.esMiembroActual = 1
+			    AND r.esMiembroActual = true
 			""")
-	int contarMiembrosActivos(@Param("idTripulacion") Integer idTripulacion);
+	Long contarMiembrosActivos(@Param("idTripulacion") Integer idTripulacion);
 
 	@Query("""
 		    SELECT new com.daw.onepiece.dtos.MiembroTripulacionDTO(
@@ -47,10 +48,10 @@ public interface ReclutamientoRepository extends CrudRepository<TripulacionEntit
 		        p.nombre,
 		        p.frutaDelDiablo,
 		        t.nombre,
-		        p.fechaNacimiento,
+		        p.fecha,
 		        i.nombre,
 		        i.id,
-		        p.estaActivo,
+		        p.activo,
 		        r.rol
 		    )
 		    FROM ReclutamientoEntity r
@@ -58,7 +59,7 @@ public interface ReclutamientoRepository extends CrudRepository<TripulacionEntit
 		    LEFT JOIN p.isla i
 		    LEFT JOIN r.tripulacion t
 		    WHERE r.tripulacion.id = :idTripulacion
-		    AND r.esMiembroActual = 1
+		    AND r.esMiembroActual = true
 		""")
 		ArrayList<MiembroTripulacionDTO> obtenerPiratasActivosDeTripulacion(@Param("idTripulacion") Integer idTripulacion);
 

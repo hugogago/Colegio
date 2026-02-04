@@ -17,4 +17,12 @@ public interface ITripulacionDAO {
 
 	ArrayList<MiembroTripulacionDTO> obtenerPiratasActivosDeTripulacion(Integer idTripulacion);
 
+	TripulacionDTO obtenerTripulacionPorId(Integer id);
+
+	void eliminarMiembro(Integer idPirata, Integer idTripulacion);
+
+	int desactivarTripulacion(Integer id);
+
+	void agregarMiembro(Integer idPirata, Integer idTripulacion, String rol);
+
 }

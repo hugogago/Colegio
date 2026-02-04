@@ -32,6 +32,21 @@ public class PirataDTO {
 		this.rol = rol;
 	}
 	
+	
+	public PirataDTO(Integer id, String nombre, String frutaDelDiablo, String tripulacion, String fecha, String isla,
+			Integer idIsla, int activo) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.frutaDelDiablo = frutaDelDiablo;
+		this.tripulacion = tripulacion;
+		this.fecha = fecha;
+		this.activo = activo;
+		this.isla = isla;
+		this.idIsla = idIsla;
+		
+	}
+
 	public PirataDTO() {
 		super();
 	}

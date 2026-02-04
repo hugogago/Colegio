@@ -67,7 +67,7 @@ public class ReclutamientoEntity {
 
 
 
-	public boolean isEsMiembroActual() {
+	public boolean getEsMiembroActual() {
 		return esMiembroActual;
 	}
 

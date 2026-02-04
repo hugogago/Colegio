@@ -8,4 +8,6 @@ public interface IDesplegablesDAO {
 
 	ArrayList<DesplegableDTO> desplegableIslas();
 
+	ArrayList<DesplegableDTO> desplegablePiratas();
+
 }

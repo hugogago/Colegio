@@ -1,6 +1,7 @@
 package com.daw.onepiece.dao.impl;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -68,6 +69,10 @@ public class PirataDAOImpl implements IPirataDAO {
        pirataRepository.save(pirata);
        return pirata.getId();
     }
-
+    
+    @Override
+	public ArrayList<PirataDTO> listarPiratasActivosNoEnTripulacion(Integer id) {
+		return (ArrayList<PirataDTO>) pirataRepository.listarPiratasSinReclutamiento();
+	}
 
 }

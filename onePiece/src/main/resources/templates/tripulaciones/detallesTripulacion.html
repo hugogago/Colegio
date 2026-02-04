@@ -69,7 +69,7 @@
                                         <td><span class="badge bg-warning text-dark" th:text="${miembro.rol}"></span>
                                         </td>
                                         <td
-                                            th:text="${miembro.frutaDiablo != null ? miembro.frutaDiablo : 'Sin fruta'}">
+                                            th:text="${miembro.frutaDelDiablo != null ? miembro.frutaDelDiablo : 'Sin fruta'}">
                                         </td>
                                         <td>
                                             <form th:action="@{/tripulaciones/eliminarMiembro}" method="post"

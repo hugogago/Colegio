@@ -13,5 +13,7 @@ public interface IPirataService {
 	int actualizarPirata(Integer id, String nombre, String frutaDelDiablo, Integer isla, String fecha, int activo);
 
 	int eliminarPirata(String id);
+	
+	ArrayList<PirataDTO> listarPiratasActivosNoEnTripulacion(Integer id);
 
 }

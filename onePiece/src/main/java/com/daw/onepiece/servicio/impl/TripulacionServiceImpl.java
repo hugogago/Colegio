@@ -6,8 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.daw.onepiece.dao.interfaces.ITripulacionDAO;
+import com.daw.onepiece.dtos.MiembroTripulacionDTO;
 import com.daw.onepiece.dtos.TripulacionDTO;
 import com.daw.onepiece.servicio.interfaces.ITripulacionService;
+
+import jakarta.transaction.Transactional;
 
 @Service
 public class TripulacionServiceImpl implements ITripulacionService {
@@ -35,5 +38,40 @@ public class TripulacionServiceImpl implements ITripulacionService {
 	@Override
 	public int eliminarTripulacion(String id) {
 		return tripulacionDAO.eliminarTripulacion(id);
+	}
+	
+	@Override
+	public ArrayList<MiembroTripulacionDTO> obtenerPiratasActivosDeTripulacion(Integer idTripulacion){
+		return tripulacionDAO.obtenerPiratasActivosDeTripulacion(idTripulacion);
+	}
+
+
+	@Override
+	public TripulacionDTO obtenerTripulacionPorId(Integer id) {
+		
+		return tripulacionDAO.obtenerTripulacionPorId(id);
+	}
+
+
+	@Override
+	@Transactional
+	public void eliminarMiembro(Integer idPirata, Integer idTripulacion) {
+		tripulacionDAO.eliminarMiembro(idPirata, idTripulacion);
+		
+	}
+
+
+	@Override
+	public int desactivarTripulacion(Integer id) {
+		
+		return tripulacionDAO.desactivarTripulacion(id);
+	}
+
+
+	@Override
+	@Transactional
+	public void agregarMiembro(Integer idPirata, Integer idTripulacion, String rol) {
+		tripulacionDAO.agregarMiembro(idPirata, idTripulacion, rol);
+		
 	}
 }

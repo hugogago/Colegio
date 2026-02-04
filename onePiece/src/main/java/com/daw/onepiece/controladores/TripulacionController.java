@@ -11,10 +11,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.daw.onepiece.dao.interfaces.IDesplegablesDAO;
 import com.daw.onepiece.dtos.DesplegableDTO;
+import com.daw.onepiece.dtos.MiembroTripulacionDTO;
 import com.daw.onepiece.dtos.PirataDTO;
 import com.daw.onepiece.dtos.TripulacionDTO;
 import com.daw.onepiece.repositorios.TripulacionRepository;
+import com.daw.onepiece.servicio.interfaces.IPirataService;
 import com.daw.onepiece.servicio.interfaces.ITripulacionService;
 
 @Controller
@@ -26,6 +29,12 @@ public class TripulacionController {
 	
 	@Autowired
 	TripulacionRepository tripulacionRepository;
+	
+
+	
+	@Autowired
+	private IPirataService pirataService;
+
 	
 	@GetMapping("/listadoTripulaciones")
 	public String formularioListadoTripulaciones() {
@@ -170,6 +179,48 @@ public class TripulacionController {
 		
 		model.addAttribute("resultado",resultado);
 		return "tripulaciones/borrarTripulaciones";
+	}
+	
+	
+	@GetMapping("/detallesTripulacion")
+	public String detallesTripulacion(@RequestParam(name = "id") Integer id, ModelMap model) {
+
+		TripulacionDTO tripulacion = tripulacionService.obtenerTripulacionPorId(id);
+		if (tripulacion == null) {
+			model.addAttribute("error", "La tripulación con ID " + id + " no existe.");
+			return "tripulaciones/listadoTripulaciones";
+		}
+
+		ArrayList<MiembroTripulacionDTO> miembros = tripulacionService.obtenerPiratasActivosDeTripulacion(id);
+		ArrayList<PirataDTO> piratasDisponibles = pirataService.listarPiratasActivosNoEnTripulacion(id);
+
+		model.addAttribute("tripulacion", tripulacion);
+		model.addAttribute("miembros", miembros);
+		model.addAttribute("piratasActivos", piratasDisponibles);
+
+		return "tripulaciones/detallesTripulacion";
+	}
+
+	@PostMapping("/agregarMiembro")
+	public String agregarMiembro(@RequestParam(name = "idTripulacion") Integer idTripulacion,
+			@RequestParam(name = "idPirata") Integer idPirata, @RequestParam(name = "rol") String rol, ModelMap model) {
+
+		
+		
+		String rolLimpio = (rol == null || rol.trim().isEmpty()) ? "Miembro" : rol.trim();
+
+		tripulacionService.agregarMiembro(idPirata, idTripulacion, rolLimpio);
+
+		return "redirect:/tripulaciones/detallesTripulacion?id=" + idTripulacion;
+	}
+
+	@PostMapping("/eliminarMiembro")
+	public String eliminarMiembro(@RequestParam(name = "idPirata") Integer idPirata,
+			@RequestParam(name = "idTripulacion") Integer idTripulacion, ModelMap model) {
+
+		tripulacionService.eliminarMiembro(idPirata, idTripulacion);
+
+		return "redirect:/tripulaciones/detallesTripulacion?id=" + idTripulacion;
 	}
 	
 }

@@ -16,12 +16,14 @@ public class TripulacionDTO {
         this.estaActiva = estaActiva;
         this.numeroMiembros = numeroMiembros;
     }
+    
 
-    public TripulacionDTO() {
+	public TripulacionDTO() {
         super();
     }
 
-    public Integer getId() {
+
+	public Integer getId() {
         return id;
     }
 
