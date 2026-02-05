@@ -74,4 +74,7 @@ public class TripulacionServiceImpl implements ITripulacionService {
 		tripulacionDAO.agregarMiembro(idPirata, idTripulacion, rol);
 		
 	}
+
+
+	
 }

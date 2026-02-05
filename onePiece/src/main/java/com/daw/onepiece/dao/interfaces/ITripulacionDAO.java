@@ -25,4 +25,6 @@ public interface ITripulacionDAO {
 
 	void agregarMiembro(Integer idPirata, Integer idTripulacion, String rol);
 
+	
+
 }

@@ -24,5 +24,9 @@ public interface ITripulacionService {
 	int desactivarTripulacion(Integer id);
 
 	void agregarMiembro(Integer idPirata, Integer idTripulacion, String rol);
+
+	
+
+	
 	
 }

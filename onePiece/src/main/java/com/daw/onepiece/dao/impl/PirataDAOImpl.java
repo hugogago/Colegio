@@ -20,7 +20,7 @@ public class PirataDAOImpl implements IPirataDAO {
     @Autowired
     private PirataRepository pirataRepository;
     
-   
+    @Autowired
     private IslaRepository islaRepository;
 
     @Override
