@@ -137,7 +137,7 @@ public class TripulacionController {
 			
 			System.out.println(act);
 			
-			Integer resultado = tripulacionService.actualizarTripulacion(nombreNull, barcoNull, act);
+			Integer resultado = tripulacionService.actualizarTripulacion(id,nombreNull, barcoNull, act);
 			
 			model.addAttribute("resultado", resultado);
 		

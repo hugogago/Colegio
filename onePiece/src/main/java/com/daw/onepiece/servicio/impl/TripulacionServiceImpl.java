@@ -31,8 +31,8 @@ public class TripulacionServiceImpl implements ITripulacionService {
 	}
 	
 	@Override
-	public int actualizarTripulacion(String nombre, String barco, Integer estaActiva) {
-		return tripulacionDAO.actualizarTripulacion(estaActiva, nombre, barco, estaActiva);
+	public int actualizarTripulacion(Integer id,String nombre, String barco, Integer estaActiva) {
+		return tripulacionDAO.actualizarTripulacion(id, nombre, barco, estaActiva);
 	}
 	
 	@Override

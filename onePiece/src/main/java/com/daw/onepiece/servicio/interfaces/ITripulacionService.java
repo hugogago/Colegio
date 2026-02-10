@@ -11,7 +11,7 @@ public interface ITripulacionService {
 
 	int insertarTripulacion(String nombre, String barco, Integer estaActiva);
 
-	int actualizarTripulacion(String nombre, String barco, Integer estaActiva);
+	int actualizarTripulacion(Integer id,String nombre, String barco, Integer estaActiva);
 
 	int eliminarTripulacion(String id);
 
